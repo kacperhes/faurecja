@@ -1,0 +1,398 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,600");
+@font-face {
+  font-family: "Daniel Bold";
+  src: url(../fonts/danielbd.ttf) format("truetype"); }
+
+/* Fonts */
+html, body {
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+  background: #ffffff;
+  scroll-behavior: smooth; }
+
+a {
+  text-decoration: none !important; }
+
+.main-heading {
+  font-family: "Montserrat";
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 65.75px;
+  text-transform: uppercase;
+  color: #c3136a;
+  padding: 50px 0; }
+
+/* Navbar */
+nav {
+  width: inherit;
+  -webkit-transition: all .35s ease;
+  -o-transition: all .35s ease;
+  transition: all .35s ease; }
+  nav .container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding-top: 25px; }
+  nav .nav-burger {
+    position: relative !important;
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    align-self: center;
+    color: #ffffff;
+    width: auto;
+    height: auto;
+    margin: 25px;
+    z-index: 100;
+    -webkit-transition: opacity .25s ease;
+    -o-transition: opacity .25s ease;
+    transition: opacity .25s ease;
+    cursor: pointer; }
+    nav .nav-burger:hover {
+      opacity: .7; }
+    nav .nav-burger.active .top {
+      -webkit-transform: translateY(10px) translateX(0) rotate(45deg);
+      -ms-transform: translateY(10px) translateX(0) rotate(45deg);
+      transform: translateY(10px) translateX(0) rotate(45deg);
+      background: #c3136a; }
+    nav .nav-burger.active .middle {
+      opacity: 0;
+      background: #c3136a; }
+    nav .nav-burger.active .bottom {
+      -webkit-transform: translateY(-10px) translateX(0) rotate(-45deg);
+      -ms-transform: translateY(-10px) translateX(0) rotate(-45deg);
+      transform: translateY(-10px) translateX(0) rotate(-45deg);
+      background: #c3136a; }
+  nav span {
+    background: #ffffff;
+    border: none;
+    height: 3px;
+    width: 42px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transition: all .35s ease;
+    -o-transition: all .35s ease;
+    transition: all .35s ease;
+    cursor: pointer; }
+    nav span:nth-of-type(1) {
+      top: 8px; }
+    nav span:nth-of-type(2) {
+      top: 16px; }
+  nav .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    visibility: hidden;
+    -webkit-transition: opacity .35s, visibility .35s, width .35s;
+    -o-transition: opacity .35s, visibility .35s, width .35s;
+    transition: opacity .35s, visibility .35s, width .35s;
+    z-index: 50; }
+    nav .overlay:before {
+      content: '';
+      background: #000000;
+      left: -55%;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      position: absolute;
+      -webkit-transition: left .35s ease;
+      -o-transition: left .35s ease;
+      transition: left .35s ease; }
+    nav .overlay:after {
+      content: '';
+      background: #000000;
+      right: -55%;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      position: absolute;
+      -webkit-transition: all .35s ease;
+      -o-transition: all .35s ease;
+      transition: all .35s ease; }
+    nav .overlay.open {
+      opacity: .8;
+      visibility: visible;
+      height: 100%; }
+      nav .overlay.open:before {
+        left: 0; }
+      nav .overlay.open:after {
+        right: 0; }
+      nav .overlay.open li {
+        -webkit-animation: fadeInRight .5s ease forwards;
+        animation: fadeInRight .5s ease forwards;
+        -webkit-animation-delay: .35s;
+        animation-delay: .35s; }
+        nav .overlay.open li:nth-of-type(2) {
+          -webkit-animation-delay: .45s;
+          animation-delay: .45s; }
+        nav .overlay.open li:nth-of-type(3) {
+          -webkit-animation-delay: .55s;
+          animation-delay: .55s; }
+        nav .overlay.open li:nth-of-type(4) {
+          -webkit-animation-delay: .65s;
+          animation-delay: .65s; }
+    nav .overlay nav {
+      position: relative;
+      height: 70%;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+      font-family: "Montserrat";
+      font-size: 35px;
+      font-weight: 400;
+      line-height: default;
+      text-align: center;
+      z-index: 100; }
+    nav .overlay ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+      display: inline-block;
+      position: relative;
+      height: 100%; }
+      nav .overlay ul li {
+        display: block;
+        height: calc(100% / 5);
+        min-height: 50px;
+        position: relative;
+        opacity: 0; }
+        nav .overlay ul li a {
+          display: block;
+          position: relative;
+          color: #FFF;
+          text-decoration: none;
+          overflow: hidden; }
+          nav .overlay ul li a:hover:after, nav .overlay ul li a:focus:after, nav .overlay ul li a:active:after {
+            width: 100%; }
+          nav .overlay ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            -webkit-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
+            height: 3px;
+            background: #c3136a;
+            -webkit-transition: .35s;
+            -o-transition: .35s;
+            transition: .35s; }
+
+.scrolled-nav {
+  padding-top: 0;
+  height: 60px !important;
+  line-height: 60px !important;
+  background: #ffffff !important;
+  -webkit-box-shadow: 0 1px 10px #999;
+  box-shadow: 0 1px 10px #999;
+  -webkit-transition: all .35s ease;
+  -o-transition: all .35s ease;
+  transition: all .35s ease; }
+  .scrolled-nav .container {
+    padding-top: 0 !important; }
+  .scrolled-nav .navbar-brand {
+    padding: 0 !important; }
+  .scrolled-nav img {
+    padding: 5px 0;
+    max-width: 80% !important;
+    height: auto !important; }
+  .scrolled-nav span {
+    background: #c3136a !important; }
+
+/* Header */
+header {
+  width: inherit;
+  height: 100vh;
+  background: url(../img/header.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  background-size: cover;
+  color: #ffffff; }
+  header .container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: inherit;
+    height: inherit;
+    -webkit-box-align: end;
+    -webkit-align-items: flex-end;
+    -ms-flex-align: end;
+    align-items: flex-end; }
+  header .header-info {
+    width: inherit !important;
+    margin-bottom: 50px; }
+  header .header-1 {
+    font-family: "Montserrat";
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 50px; }
+  header .header-2 {
+    font-family: "Montserrat";
+    font-size: 50px;
+    font-weight: 600;
+    line-height: 50px;
+    text-transform: uppercase;
+    font-variant: small-caps; }
+  header .header-3 {
+    font-family: "Daniel Bold";
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 75px; }
+
+/* People */
+#people .row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: wrap;
+  -ms-flex-flow: wrap;
+  flex-flow: wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between; }
+
+#people .row-1 {
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start; }
+
+#people .row-2 {
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+  -ms-flex-align: end;
+  align-items: flex-end; }
+
+#people .card {
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  border: none; }
+  #people .card .card-img-top {
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    cursor: pointer; }
+
+#people .card-body {
+  position: relative; }
+
+#people .card-footer {
+  background: #ffffff !important;
+  border: none !important; }
+
+#people .people-desc {
+  font-family: "Montserrat";
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 25px;
+  color: #808a97; }
+
+#people .quote-img {
+  margin-left: -60px;
+  width: 60px;
+  height: 60px;
+  z-index: -100 !important; }
+
+#people .quote {
+  margin-top: -40px;
+  margin-left: -25px;
+  font-family: "Montserrat";
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 25px;
+  font-style: italic;
+  color: #434343; }
+
+#people .person-bold {
+  font-family: "Montserrat";
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 10px; }
+
+#people .person {
+  font-family: "Montserrat";
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 10px; }
+
+@media all and (max-width: 768px) {
+  .quote-img {
+    margin-left: 0; } }
+
+/* Newsfeed */
+#newsfeed .row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  padding-bottom: 50px; }
+  #newsfeed .row .card {
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    border: none; }
+    #newsfeed .row .card .card-img-top {
+      -webkit-border-radius: 0;
+      border-radius: 0;
+      cursor: pointer; }
+    #newsfeed .row .card .card-body {
+      max-height: 150px;
+      overflow-y: hidden;
+      -o-text-overflow: ellipsis;
+      text-overflow: ellipsis; }
+    #newsfeed .row .card .card-title {
+      color: #c3136a;
+      font-family: "Montserrat";
+      font-size: 25px;
+      font-weight: 400;
+      line-height: 35px; }
+    #newsfeed .row .card .card-text {
+      color: #808a97;
+      font-family: "Montserrat";
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 20px;
+      border-bottom: 1px #808a97; }
+    #newsfeed .row .card .card-footer {
+      background: #ffffff !important; }
+    #newsfeed .row .card .read-more {
+      color: #000000;
+      font-family: "Montserrat";
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 20px;
+      -webkit-transition: all .25s ease;
+      -o-transition: all .25s ease;
+      transition: all .25s ease; }
+      #newsfeed .row .card .read-more:hover, #newsfeed .row .card .read-more.active, #newsfeed .row .card .read-more:focus {
+        color: #c3136a; }
+
+@media all and (min-width: 736px) {
+  .row .card {
+    width: 90%; } }
+
+/* Animations */
+@-webkit-keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    left: 20%; }
+  100% {
+    opacity: 1;
+    left: 0; } }
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    left: 20%; }
+  100% {
+    opacity: 1;
+    left: 0; } }

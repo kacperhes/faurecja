@@ -1,0 +1,370 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600');
+@font-face {
+  font-family: "Daniel Bold";
+  src: url(../fonts/danielbd.ttf) format("truetype");
+}
+@import "variables";
+@import "mixins";
+
+html, body{
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+  background: $theme-white;
+  scroll-behavior: smooth;
+}
+a{
+  text-decoration: none!important;
+}
+.main-heading{
+  @include font-custom("Montserrat", 40px, 600, 65.75px);
+  text-transform: uppercase;
+  color: $color-main;
+  padding: 50px 0;
+}
+
+
+/* Navbar */
+nav{
+  width: inherit;
+  transition: all .35s ease;
+  .container{
+    display: flex;
+    padding-top: 25px;
+  }
+  .nav-burger{
+    position: relative !important;
+    align-self: center;
+    color: $theme-white;
+    width: auto;
+    height: auto;
+    margin: 25px;
+    z-index: 100;
+    transition: opacity .25s ease;
+    cursor: pointer;
+    &:hover {
+      opacity: .7;
+    }
+    &.active {
+      .top {
+        transform: translateY(10px) translateX(0) rotate(45deg);
+        background: $color-main;
+      }
+      .middle {
+        opacity: 0;
+        background: $color-main;
+      }
+
+      .bottom {
+        transform: translateY(-10px) translateX(0) rotate(-45deg);
+        background: $color-main;
+      }
+    }
+  }
+  span{
+    background: $theme-white;
+    border: none;
+    height: 3px;
+    width: 42px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition:  all .35s ease;
+    cursor: pointer;
+
+    &:nth-of-type(1) {
+      top: 8px;
+    }
+
+    &:nth-of-type(2) {
+      top: 16px;
+    }
+  }
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    visibility: hidden;
+    transition: opacity .35s, visibility .35s, width .35s;
+    z-index: 50;
+
+    &:before {
+      content: '';
+      background: $theme-dark;
+      left: -55%;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      position: absolute;
+      transition: left .35s ease;
+    }
+
+    &:after {
+      content: '';
+      background: $theme-dark;
+      right: -55%;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      position: absolute;
+      transition: all .35s ease;
+    }
+
+    &.open {
+      opacity: .8;
+      visibility: visible;
+      height: 100%;
+
+      &:before {
+        left: 0;
+      }
+
+      &:after {
+        right: 0;
+      }
+
+      li {
+        animation: fadeInRight .5s ease forwards;
+        animation-delay: .35s;
+
+        &:nth-of-type(2) {
+          animation-delay: .45s;
+        }
+        &:nth-of-type(3) {
+          animation-delay: .55s;
+        }
+        &:nth-of-type(4) {
+          animation-delay: .65s;
+        }
+      }
+    }
+    nav {
+      position: relative;
+      height: 70%;
+      top: 50%;
+      transform: translateY(-50%);
+      @include font-custom("Montserrat", 35px, 400, default);
+      text-align: center;
+      z-index: 100;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+      display: inline-block;
+      position: relative;
+      height: 100%;
+
+      li {
+        display: block;
+        height: calc(100% / 5);
+        min-height: 50px;
+        position: relative;
+        opacity: 0;
+
+        a {
+          display: block;
+          position: relative;
+          color: $color-link;
+          text-decoration: none;
+          overflow: hidden;
+
+          &:hover:after,
+          &:focus:after,
+          &:active:after {
+            width: 100%;
+          }
+
+          &:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            transform: translateX(-50%);
+            height: 3px;
+            background: $color-main;
+            transition: .35s;
+          }
+        }
+      }
+    }
+  }
+}
+.scrolled-nav{
+  padding-top: 0;
+  height: 60px !important;
+  line-height: 60px !important;
+  background: $theme-white!important;
+  box-shadow: 0 1px 10px #999;
+  transition: all .35s ease;
+  .container{
+    padding-top: 0!important;
+  }
+  .navbar-brand{
+    padding: 0!important;
+  }
+  img{
+    padding: 5px 0;
+    max-width: 80%!important;
+    height: auto!important;
+  }
+  span{
+    background: $color-main!important;
+  }
+}
+/* Header */
+header{
+  width: inherit;
+  height: 100vh;
+  background: url(../img/header.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: $theme-white;
+  .container{
+    display: flex;
+    width: inherit;
+    height: inherit;
+    align-items: flex-end;
+  }
+  .header-info {
+    width: inherit!important;
+    margin-bottom: 50px;
+  }
+  .header-1{
+    @include font-custom('Montserrat', 30px, 500, 50px);
+  }
+  .header-2{
+    @include font-custom("Montserrat", 50px, 600, 50px);
+    text-transform: uppercase;
+    font-variant: small-caps;
+  }
+  .header-3{
+    @include font-custom("Daniel Bold", 40px, 400, 75px)
+  }
+}
+
+/* People */
+#people{
+  .row{
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between;
+  }
+  .row-1{
+    align-items: flex-start;
+  }
+  .row-2{
+    align-items: flex-end;
+  }
+  .card{
+    border-radius: 0;
+    border: none;
+    .card-img-top{
+      border-radius: 0;
+      cursor: pointer;
+    }
+  }
+  .card-body{
+    position: relative;
+  }
+  .card-footer{
+    background: $theme-white!important;
+    border: none!important;
+  }
+  .people-desc{
+    @include font-custom("Montserrat", 15px, 300, 25px);
+    color: $theme-grey;
+  }
+  .quote-img{
+    margin-left: -60px;
+    width: 60px;
+    height: 60px;
+    z-index: -100!important;
+  }
+  .quote{
+    margin-top: -40px;
+    margin-left: -25px;
+    @include font-custom("Montserrat", 15px, 400, 25px);
+    font-style: italic;
+    color: $secondary-dark;
+  }
+  .person-bold{
+    @include font-custom("Montserrat", 15px, 700, 10px);
+  }
+  .person{
+    @include font-custom("Montserrat", 15px, 400, 10px);
+  }
+}
+@media all and (max-width: 768px){
+  .quote-img{
+    margin-left: 0;
+  }
+}
+
+/* Newsfeed */
+#newsfeed{
+  .row{
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 50px;
+    .card{
+      border-radius: 0;
+      border: none;
+      .card-img-top{
+        border-radius: 0;
+        cursor: pointer;
+      }
+      .card-body{
+        max-height: 150px;
+        overflow-y: hidden;
+        text-overflow: ellipsis;
+      }
+      .card-title{
+        color: $color-main;
+        @include font-custom("Montserrat", 25px, 400, 35px);
+      }
+      .card-text{
+        color: $theme-grey;
+        @include font-custom("Montserrat", 15px, 400, 20px);
+        border-bottom: 1px $theme-grey;
+      }
+      .card-footer{
+        background: $theme-white!important;
+      }
+      .read-more{
+        color: $theme-dark;
+        @include font-custom("Montserrat", 15px, 600, 20px);
+        transition: all .25s ease;
+        &:hover, &.active, &:focus{
+          color: $color-main;
+        }
+      }
+    }
+  }
+}
+
+@media all and (min-width: 736px) {
+  .row{
+      .card{
+        width: 90%;
+      }
+  }
+}
+
+/* Animations */
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    left: 20%;
+  }
+  100% {
+    opacity: 1;
+    left: 0;
+  }
+}
